@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>НИНИ · Ни стыда ни сахара</title>
+<meta name="description" content="Кафе «Ни стыда ни сахара» в Улан-Удэ: завтраки, боулы, десерты без сахара и ПП to go с КБЖУ.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#252525;--cream:#FAF8F6;--olive:#6E682C;--olive2:#8F883D;--pink:#F8BDC4;--silver:#BDB3B3;--line:#E7E1D8}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Geologica,Arial,sans-serif;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(250,248,246,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:12px}
+.disc{width:46px;height:46px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center}
+.disc svg{width:27px}
+.brand b{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;line-height:1.25}
+nav.main{display:flex;gap:30px;font-size:15px;font-weight:500}
+nav.main a:hover{color:var(--olive)}
+.cta{background:var(--ink);color:var(--cream);padding:13px 22px;border-radius:999px;font-weight:600;font-size:14px;letter-spacing:.04em}
+.cta:hover{background:var(--olive)}
+.burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer}
+.burger span{display:block;height:2px;background:var(--ink);margin:7px 6px}
+/* hero */
+.hero{position:relative;height:min(84vh,780px);overflow:hidden;background:var(--ink)}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(248,189,196,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(248,189,196,.07) 1px,transparent 1px);background-size:44px 44px}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.slide.on{opacity:1;z-index:1}
+.slide img{position:absolute;right:0;top:0;width:50%;height:100%;object-fit:cover}
+.cap{position:absolute;z-index:2;left:max(24px,calc((100vw - 1240px)/2 + 24px));top:50%;transform:translateY(-50%);width:min(560px,calc(50% - 64px));color:var(--cream)}
+.kick{font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--pink);margin-bottom:16px}
+.cap h1{font-size:clamp(46px,7vw,92px);font-weight:700;line-height:.95;letter-spacing:-.03em;text-transform:uppercase}
+.lead{font-size:clamp(17px,1.6vw,21px);font-weight:300;line-height:1.45;margin:20px 0 30px;color:#EDE8E2}
+.btn{display:inline-block;background:var(--pink);color:var(--ink);padding:16px 30px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.dark{background:var(--ink);color:var(--cream)}
+.dots{position:absolute;z-index:3;bottom:32px;left:max(24px,calc((100vw - 1240px)/2 + 24px));display:flex;gap:10px}
+.dots button{width:10px;height:10px;border-radius:50%;border:0;background:rgba(250,248,246,.45);cursor:pointer;transition:all .3s}
+.dots button.on{width:32px;border-radius:6px;background:var(--pink)}
+.arr{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,248,246,.5);background:rgba(0,0,0,.2);color:var(--cream);font-size:22px;cursor:pointer}
+.arr.l{left:calc(50% + 20px)}.arr.r{right:20px}
+/* sections */
+section{padding:96px 0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px}
+h2{font-size:clamp(34px,4.4vw,56px);font-weight:700;letter-spacing:-.02em;line-height:1;text-transform:uppercase}
+.more{font-weight:600;border-bottom:2px solid var(--pink);padding-bottom:4px;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border-radius:24px;overflow:hidden;border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(37,37,37,.10)}
+.card .ph{aspect-ratio:4/5;background:#1a1a1a;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover img{transform:scale(1.04)}
+.ct{padding:22px 24px 26px}
+.ct h3{font-size:19px;font-weight:600;line-height:1.3}
+.ct p{display:flex;gap:14px;align-items:baseline;margin-top:10px}
+.ct b{font-size:20px;color:var(--olive)}
+.ct span{font-size:14px;color:#7a746c}
+/* about */
+.about{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.about:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(248,189,196,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(248,189,196,.08) 1px,transparent 1px);background-size:44px 44px}
+.ab{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
+.ab img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:28px}
+.ab p.t{font-size:19px;font-weight:300;line-height:1.6;color:#DDD6CE;margin-top:24px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+.facts div{border:1px solid rgba(248,189,196,.45);border-radius:18px;padding:18px}
+.facts b{display:block;font-size:22px;color:var(--pink)}
+.facts span{font-size:14px;color:#CFC8BF}
+/* shops */
+.shops{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.shop{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px}
+.shop .kick{color:var(--olive)}
+.shop h3{font-size:28px;font-weight:600}
+.hrs{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0}
+.hrs b{background:var(--olive);color:var(--cream);border-radius:999px;padding:9px 18px;font-size:18px}
+.pill{background:var(--pink);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+.tel{font-size:20px;font-weight:600}
+/* order */
+.order{background:var(--pink)}
+.ord{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.ord p{font-size:19px;font-weight:300;margin-top:14px;max-width:520px;line-height:1.5}
+.ord .bs{display:flex;gap:12px;flex-wrap:wrap}
+footer{background:var(--ink);color:#CFC8BF;padding:48px 0;font-size:14px}
+.ft{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+.ft a{color:var(--cream);font-weight:500;margin-right:22px}
+@media (max-width:900px){
+ nav.main,.bar .cta{display:none}
+ .burger{display:block}
+ nav.main.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:var(--cream);padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
+ .grid{grid-template-columns:1fr;gap:18px}
+ .ab,.shops{grid-template-columns:1fr}
+ .ab{gap:36px}
+ section{padding:64px 0}
+ .head{flex-direction:column;align-items:flex-start}
+ .arr{display:none}
+ .hero{height:auto;min-height:0}
+ .slide{position:relative;display:none}
+ .slide.on{display:block}
+ .slide img{position:relative;width:100%;height:auto;aspect-ratio:4/5}
+ .cap{position:relative;left:auto;top:auto;transform:none;width:auto;padding:28px 24px 72px}
+ .dots{left:24px;bottom:28px}
+ .facts{grid-template-columns:1fr}
+}
+</style></head>
+<body>
+<header><div class="wrap bar">
+ <a class="brand" href="#top"><span class="disc"><svg viewBox="0 0 1180 420" fill="currentColor" aria-hidden="true"><path d="M0 0h100v420H0zM270 0h100v420H270zM540 0h100v420H540zM810 0h100v420H810zM1080 0h100v420h-100zM100 165h170v95H100zM640 165h170v95H640zM540 0h100L370 420H270zM1080 0h100L910 420H810z"/></svg></span><b>Ни стыда<br>ни сахара</b></a>
+ <nav class="main" id="nav"><a href="https://nini-menu.github.io/nini-menu/">Меню</a><a href="#new">Новинки</a><a href="#about">О нас</a><a href="#shops">Адреса</a><a href="https://instagram.com/ni.stida_ni.sahara">Instagram</a></nav>
+ <a class="cta" href="#order">Заказать</a>
+ <button class="burger" aria-label="Меню" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+</div></header>
+<main id="top">
+<div class="hero" id="hero"><div class="slide on"><img src="img/hero-togo.jpg" alt="" ><div class="cap"><p class="kick">Новое · ПП to go</p><h1>Возьми меня<br>с собой</h1><p class="lead">Сэндвичи и боксы собраны, закрыты и подписаны: КБЖУ на каждой наклейке.</p><a class="btn" href="https://nini-menu.github.io/nini-menu/#pp-to-go">Смотреть to go</a></div></div><div class="slide"><img src="img/hero-energy.jpg" alt="" loading=lazy ><div class="cap"><p class="kick">Энерго-стаканы</p><h1>Завтрак<br>в стакане</h1><p class="lead">Чиа-пудинг, гранола и ягоды — черника, манго или клубника.</p><a class="btn" href="https://nini-menu.github.io/nini-menu/#pp-to-go">Выбрать вкус</a></div></div><div class="slide"><img src="img/hero-matcha.jpg" alt="" loading=lazy ><div class="cap"><p class="kick">Кофе и матча</p><h1>Осень<br>на зелёном</h1><p class="lead">Матча, кофе и авторские чаи — в зале и с собой.</p><a class="btn" href="https://nini-menu.github.io/nini-menu/">Меню напитков</a></div></div><div class="slide"><img src="img/hero-tea.jpg" alt="" loading=lazy ><div class="cap"><p class="kick">Ни стыда ни сахара</p><h1>Сладко —<br>без сахара</h1><p class="lead">Десерты, завтраки и боулы с КБЖУ и составом на каждой позиции.</p><a class="btn" href="https://nini-menu.github.io/nini-menu/">Всё меню</a></div></div>
+ <button class="arr l" aria-label="Назад">←</button><button class="arr r" aria-label="Вперёд">→</button>
+ <div class="dots"><button aria-label="Слайд 1" class=on></button><button aria-label="Слайд 2"></button><button aria-label="Слайд 3"></button><button aria-label="Слайд 4"></button></div></div>
+
+<section id="new"><div class="wrap">
+ <div class="head"><h2>Хиты to go</h2><a class="more" href="https://nini-menu.github.io/nini-menu/#pp-to-go">Вся линейка →</a></div>
+ <div class="grid"><a class="card" href="https://nini-menu.github.io/nini-menu/#pp-to-go"><div class="ph"><img src="img/f-sandwich.jpg" alt="Сэндвич to go «Курица»" loading="lazy"></div><div class="ct"><h3>Сэндвич to go «Курица»</h3><p><b>490 ₽</b><span>448 ккал · 251 г</span></p></div></a><a class="card" href="https://nini-menu.github.io/nini-menu/#pp-to-go"><div class="ph"><img src="img/f-box.jpg" alt="Бокс to go «Гречка, курица, яйцо»" loading="lazy"></div><div class="ct"><h3>Бокс to go «Гречка, курица, яйцо»</h3><p><b>510 ₽</b><span>417 ккал · 380 г</span></p></div></a><a class="card" href="https://nini-menu.github.io/nini-menu/#pp-to-go"><div class="ph"><img src="img/f-energy.jpg" alt="Энерго-стакан «Манго»" loading="lazy"></div><div class="ct"><h3>Энерго-стакан «Манго»</h3><p><b>490 ₽</b><span>372 ккал · 282 г</span></p></div></a></div>
+</div></section>
+
+<section class="about" id="about"><div class="wrap ab">
+ <div><p class="kick">О нас</p><h2>Ни стыда<br>ни сахара</h2>
+  <p class="t">Кафе правильного питания в Улан-Удэ. Готовим завтраки, каши, поке и боулы, печём десерты без сахара — и честно пишем КБЖУ и состав у каждой позиции. Чтобы есть вкусно и не считать в уме.</p>
+  <div class="facts"><div><b>КБЖУ</b><span>и состав в меню у каждой позиции</span></div><div><b>без сахара</b><span>десерты и сладкое</span></div><div><b>2 места</b><span>Сахьяновой и Калашникова</span></div></div>
+ </div>
+ <img src="img/about.jpg" alt="Чай в НИНИ" loading="lazy">
+</div></section>
+
+<section id="shops"><div class="wrap">
+ <div class="head"><h2>Где нас найти</h2><a class="more" href="https://nini-menu.github.io/nini-menu/">Меню с КБЖУ →</a></div>
+ <div class="shops"><div class="shop"><p class="kick">Фабричный Маркет</p><h3>ул. Сахьяновой, 7Б/3</h3><p class="hrs"><b>08:00–20:00</b><span class="pill">перерыв 14:00–14:30</span></p><a class="tel" href="tel:+79834375413">☎ 8 983 437-54-13</a></div><div class="shop"><p class="kick">45-й квартал · 1 этаж</p><h3>ул. Калашникова, 11Б/1</h3><p class="hrs"><b>08:00–20:00</b><span class="pill">без перерыва</span></p><a class="tel" href="tel:+79834527070">☎ 8 983 452-70-70</a></div></div>
+</div></section>
+
+<section class="order" id="order"><div class="wrap ord">
+ <div><h2>Заказать</h2><p>Позвоните в ближайшую НИНИ — соберём заказ с собой. Или напишите нам в Instagram.</p></div>
+ <div class="bs"><a class="btn dark" href="tel:+79834375413">Позвонить · Фабричный Маркет</a><a class="btn dark" href="tel:+79834527070">Позвонить · 45-й квартал</a><a class="btn" style="background:#fff" href="https://instagram.com/ni.stida_ni.sahara">Написать в Instagram</a></div>
+</div></section>
+</main>
+<footer><div class="wrap ft">
+ <div><a href="https://nini-menu.github.io/nini-menu/">Меню</a><a href="#shops">Адреса</a><a href="https://instagram.com/ni.stida_ni.sahara">Instagram</a></div>
+ <div>© НИНИ · Ни стыда ни сахара · Улан-Удэ</div>
+</div></footer>
+<script>
+(function(){
+ var s=[].slice.call(document.querySelectorAll('.slide')),d=[].slice.call(document.querySelectorAll('.dots button')),i=0,t;
+ function go(n){s[i].classList.remove('on');d[i].classList.remove('on');i=(n+s.length)%s.length;s[i].classList.add('on');d[i].classList.add('on');}
+ function play(){clearInterval(t);t=setInterval(function(){go(i+1)},6000);}
+ d.forEach(function(b,k){b.onclick=function(){go(k);play();}});
+ document.querySelector('.arr.l').onclick=function(){go(i-1);play();};
+ document.querySelector('.arr.r').onclick=function(){go(i+1);play();};
+ var x0=null,h=document.getElementById('hero');
+ h.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+ h.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));play();}x0=null;});
+ play();
+})();
+</script>
+</body></html>
